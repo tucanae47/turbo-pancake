@@ -8,7 +8,10 @@ TOPLEVEL_LANG   ?= verilog			# hdl (verilog, vhdl)
 # source files
 # ==============================================================================
 # VERILOG_SOURCES += ./*.v
-VERILOG_SOURCES += ./mux_bin_bhl.v
+VERILOG_SOURCES += ./addsub_bin.v
+VERILOG_SOURCES += ./width_adj.v
+# VERILOG_SOURCES += ./register.v
+VERILOG_SOURCES += ./carryin_bin.v
 
 # ==============================================================================
 # modules
@@ -21,8 +24,8 @@ VERILOG_SOURCES += ./mux_bin_bhl.v
 # TOPLEVEL = m_counter		# top level rtl module
 
 
-MODULE	 = test_mux 			# python cocotb tests
-TOPLEVEL = mux_bin_bhl		# top level rtl module
+MODULE	 = test_addsub			# python cocotb tests
+TOPLEVEL = addsub_bin		# top level rtl module
 
 # ==============================================================================
 # cocotb magic
