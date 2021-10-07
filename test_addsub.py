@@ -22,9 +22,11 @@ async def test_addsub(dut):
     # sel = np.dtype('int32').type(1)
     # print("selector  = {}".format(sel)f
     for i in range(18):
+        # a = i
+        # b = i
         dut.carry_in = 0
         dut.A        = i
-        dut.B        = 1
+        dut.B        = i
         await Timer(1, units='ns')
         s = dut.sum.value
         sumb = s.binstr   
@@ -32,5 +34,6 @@ async def test_addsub(dut):
         carry = dut.carry_out.value.integer
         carries = dut.carries.value.integer 
         overflow = dut.overflow.value.integer 
-        print("observed = {}, expected = {}".format(sum, i + 1))
-        # print("carry = {}, overflow = {}, carries = {}".format(carry, overflow, carries))
+        print("AB = {}, observed = {}, expected = {}".format(i, sum, i + i))
+        print("bin AB = {}, observed = {}, expected = {}".format( f"{i:05b}" , sumb, f"{(i + i):05b}"))
+        print("carry = {}, overflow = {}, carries = {}\n\n".format(carry, overflow, carries))

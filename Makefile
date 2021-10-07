@@ -10,7 +10,8 @@ TOPLEVEL_LANG   ?= verilog			# hdl (verilog, vhdl)
 # VERILOG_SOURCES += ./*.v
 VERILOG_SOURCES += ./addsub_bin.v
 VERILOG_SOURCES += ./width_adj.v
-# VERILOG_SOURCES += ./register.v
+VERILOG_SOURCES += ./register.v
+VERILOG_SOURCES += ./counter_bin.v
 VERILOG_SOURCES += ./carryin_bin.v
 
 # ==============================================================================
@@ -24,8 +25,11 @@ VERILOG_SOURCES += ./carryin_bin.v
 # TOPLEVEL = m_counter		# top level rtl module
 
 
-MODULE	 = test_addsub			# python cocotb tests
-TOPLEVEL = addsub_bin		# top level rtl module
+# MODULE	 = test_addsub			# python cocotb tests
+# TOPLEVEL = addsub_bin		# top level rtl module
+
+MODULE	 = test_countbin			# python cocotb tests
+TOPLEVEL = counter_bin		# top level rtl module
 
 # ==============================================================================
 # cocotb magic

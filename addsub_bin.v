@@ -28,7 +28,7 @@
 
 module addsub_bin
 #(
-    parameter       WORD_WIDTH = 9
+    parameter       WORD_WIDTH = 20
 )
 (
     input   wire                        add_sub,    // 0/1 -> A+B/A-B
@@ -141,16 +141,16 @@ module addsub_bin
         overflow = (carries [WORD_WIDTH-1] != carry_out);
     end
 
-    `ifdef COCOTB_SIM
-    `ifndef SCANNED
-    `define SCANNED
-    initial begin
-        $dumpfile ("wave.vcd");
-        $dumpvars (0, addsub_bin);
-        #1;
-    end
-    `endif
-    `endif
+    // `ifdef COCOTB_SIM
+    // `ifndef SCANNED
+    // `define SCANNED
+    // initial begin
+    //     $dumpfile ("wave.vcd");
+    //     $dumpvars (0, addsub_bin);
+    //     #1;
+    // end
+    // `endif
+    // `endif
 
 endmodule
 
