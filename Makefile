@@ -13,6 +13,8 @@ VERILOG_SOURCES += ./width_adj.v
 VERILOG_SOURCES += ./register.v
 VERILOG_SOURCES += ./counter_bin.v
 VERILOG_SOURCES += ./carryin_bin.v
+# VERILOG_SOURCES += ./register_pipe.v
+VERILOG_SOURCES += ./register_pipe_simple.v
 
 # ==============================================================================
 # modules
@@ -28,8 +30,8 @@ VERILOG_SOURCES += ./carryin_bin.v
 # MODULE	 = test_addsub			# python cocotb tests
 # TOPLEVEL = addsub_bin		# top level rtl module
 
-MODULE	 = test_countbin			# python cocotb tests
-TOPLEVEL = counter_bin		# top level rtl module
+MODULE	 = test_registerpipe			# python cocotb tests
+TOPLEVEL = register_pipe_simple		# top level rtl module
 
 # ==============================================================================
 # cocotb magic

@@ -147,16 +147,16 @@ module counter_bin
         .data_out       (overflow)
     );
 
-    `ifdef COCOTB_SIM
-    `ifndef SCANNED
-    `define SCANNED
-    initial begin
-        $dumpfile ("wave.vcd");
-        $dumpvars (0, counter_bin);
-        #1;
-    end
-    `endif
-    `endif
+    // `ifdef COCOTB_SIM
+    // `ifndef SCANNED
+    // `define SCANNED
+    // initial begin
+    //     $dumpfile ("wave.vcd");
+    //     $dumpvars (0, counter_bin);
+    //     #1;
+    // end
+    // `endif
+    // `endif
 
 endmodule
 
