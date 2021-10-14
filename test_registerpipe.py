@@ -32,8 +32,8 @@ async def test_registerpipe(dut):
             await RisingEdge(dut.clock)
         c = dut.pipe_out.value
         countb = c.binstr   
-        print("Current count_binary = {} ".format(c, countb))
+        print("after {} cycles we have the number back = bin {} dec{}".format(pipe_width, countb, c))
+        # clear register
         dut.clear <= 1
         await RisingEdge(dut.clock)
         dut.clear <= 0
-        # c = dut.pipe_out
