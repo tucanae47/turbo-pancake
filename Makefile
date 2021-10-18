@@ -8,13 +8,17 @@ TOPLEVEL_LANG   ?= verilog			# hdl (verilog, vhdl)
 # source files
 # ==============================================================================
 # VERILOG_SOURCES += ./*.v
-VERILOG_SOURCES += ./addsub_bin.v
-VERILOG_SOURCES += ./width_adj.v
-VERILOG_SOURCES += ./register.v
-VERILOG_SOURCES += ./counter_bin.v
-VERILOG_SOURCES += ./carryin_bin.v
+# VERILOG_SOURCES += ./addsub_bin.v
+# VERILOG_SOURCES += ./width_adj.v
+# VERILOG_SOURCES += ./register.v
+# VERILOG_SOURCES += ./counter_bin.v
+# VERILOG_SOURCES += ./carryin_bin.v
 # VERILOG_SOURCES += ./register_pipe.v
-VERILOG_SOURCES += ./register_pipe_simple.v
+# VERILOG_SOURCES += ./register_pipe_simple.v
+
+VERILOG_SOURCES += ./sram.v
+# VERILOG_SOURCES += ./dffram.v
+# VERILOG_SOURCES += ./addsub_bin.v
 
 # ==============================================================================
 # modules
@@ -30,8 +34,12 @@ VERILOG_SOURCES += ./register_pipe_simple.v
 # MODULE	 = test_addsub			# python cocotb tests
 # TOPLEVEL = addsub_bin		# top level rtl module
 
-MODULE	 = test_registerpipe			# python cocotb tests
-TOPLEVEL = register_pipe_simple		# top level rtl module
+# MODULE	 = test_registerpipe			# python cocotb tests
+# TOPLEVEL = register_pipe_simple		# top level rtl module
+
+
+MODULE	 = test_ram			# python cocotb tests
+TOPLEVEL = sram		# top level rtl module
 
 # ==============================================================================
 # cocotb magic
