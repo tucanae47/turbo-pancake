@@ -11,9 +11,6 @@ from cocotb.result import TestFailure, ReturnValue
 @cocotb.coroutine
 def write_ram(dut, address, value):
     yield RisingEdge(dut.clk)              # Synchronise to the read clock
-    # dut.address_write = address                  # Drive the values
-    # dut.data_write    = value
-    # dut.write_enable  = 1
     dut.we = 1
     dut.addr_w = address
     dut.data_i = value
@@ -39,9 +36,9 @@ def test_ram(dut):
     depth = 2**dut.AWIDTH.value
     dut.log.info("Found %d entry RAM by %d bits wide" % (depth, width))
 
+    clock = Clock(dut.clk, 20, units="us")
     # Set up independent read/write clocks
-    cocotb.fork(Clock(dut.clk, 3200).start())
-    # cocotb.fork(Clock(dut.clk_read, 5000).start())
+    cocotb.fork(clock.start())
     
     dut.log.info("Writing in random values")
     for i in range(depth):
