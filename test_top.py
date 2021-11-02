@@ -106,8 +106,3 @@ async def test_top(dut):
 
     await ClockCycles(dut.clk, 5)
       
-    # for i in range(50):
-    #     popcount = dut.be_out.value
-    #     binpc = popcount.binstr   
-    #     print("Popcount {} bin{}".format(popcount, binpc))
-    #     await RisingEdge(dut.clk)
