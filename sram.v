@@ -1,8 +1,8 @@
 `timescale 1ns / 1ps
 module sram
 	#(
-	parameter DWIDTH = 24,
-	parameter AWIDTH = 6
+	parameter DWIDTH = 56,
+	parameter AWIDTH = 8
 	)
 	(
 	input          				clk,
@@ -22,16 +22,17 @@ begin
 
 end
 
-`ifdef COCOTB_SIM
-    `ifndef SCANNED
-    `define SCANNED
-    initial begin
-        $dumpfile ("wave.vcd");
-        $dumpvars (0, sram);
-        #1;
-    end
-    `endif
-    `endif
+
+// `ifdef COCOTB_SIM
+//     `ifndef SCANNED
+//     `define SCANNED
+//     initial begin
+//         $dumpfile ("wave.vcd");
+//         $dumpvars (0, sram);
+//         #1;
+//     end
+//     `endif
+//     `endif
 
 endmodule
 

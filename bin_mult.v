@@ -85,14 +85,14 @@ module bin_mult(
             end
         end
     end
-    `ifdef COCOTB_SIM
-    `ifndef SCANNED
-    `define SCANNED
-    initial begin
-        $dumpfile ("wave.vcd");
-        $dumpvars (0, bin_mult);
-        #1;
-    end
-    `endif
-    `endif
+    // `ifdef COCOTB_SIM
+    // `ifndef SCANNED
+    // `define SCANNED
+    // initial begin
+    //     $dumpfile ("wave.vcd");
+    //     $dumpvars (0, bin_mult);
+    //     #1;
+    // end
+    // `endif
+    // `endif
 endmodule

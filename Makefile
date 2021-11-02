@@ -17,8 +17,9 @@ TOPLEVEL_LANG   ?= verilog			# hdl (verilog, vhdl)
 # VERILOG_SOURCES += ./register_pipe_simple.v
 
 VERILOG_SOURCES += ./bin_mult.v
+VERILOG_SOURCES += ./TOP.v
 VERILOG_SOURCES += ./xnor7.v
-# VERILOG_SOURCES += ./sram.v
+VERILOG_SOURCES += ./sram.v
 # VERILOG_SOURCES += ./dffram.v
 # VERILOG_SOURCES += ./addsub_bin.v
 
@@ -40,9 +41,11 @@ VERILOG_SOURCES += ./xnor7.v
 # TOPLEVEL = register_pipe_simple		# top level rtl module
 
 
-MODULE	 = test_bu		# python cocotb tests
-TOPLEVEL = bin_mult		# top level rtl module
+# MODULE	 = test_bu		# python cocotb tests
+# TOPLEVEL = bin_mult		# top level rtl module
 
+MODULE	 = test_top		# python cocotb tests
+TOPLEVEL = TOP		# top level rtl module
 # ==============================================================================
 # cocotb magic
 # ==============================================================================
