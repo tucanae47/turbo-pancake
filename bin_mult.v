@@ -3,20 +3,15 @@
 module bin_mult(
     input clk,
     input rst,
-    input [4:0] opcode, 
     input w_en,
+    input c_rst,
     input wire [6:0] [6:0] img ,
     input wire [6:0] w_input,
     output reg signed[6:0] popcnt_add
     );
     // hardcode lookup table to select vectors 
-    wire inst_rst;
-    assign inst_rst = opcode[0];
-    wire [2:0]lut_sel;
-    assign lut_sel = opcode[3:1];
-    wire inst_add;
-    assign inst_add = opcode[4];
     
+    reg [2:0] count = 3'b0;
     reg [6:0][6:0]w;
     always@(posedge clk)begin
         if(rst)begin
@@ -57,30 +52,35 @@ module bin_mult(
     .w(w[6]),
     .x_out(x_out[6]));
     
-    // lut_selection
+    
+    
     wire [6:0] lut_in_origin;
-    assign lut_in_origin = x_out[lut_sel];
+    assign lut_in_origin = x_out[count];
     wire [5:0] lut_in;
     assign lut_in = lut_in_origin[5:0];
     
+    // lut_selection
 
     wire[63:0][2:0]lookup_popcnt;
     assign lookup_popcnt={{3'b110},{3'b101},{3'b101},{3'b100},{3'b101},{3'b100},{3'b100},{3'b11},{3'b101},{3'b100},{3'b100},{3'b11},{3'b100},{3'b11},{3'b11},{3'b10},{3'b101},{3'b100},{3'b100},{3'b11},{3'b100},{3'b11},{3'b11},{3'b10},{3'b100},{3'b11},{3'b11},{3'b10},{3'b11},{3'b10},{3'b10},{3'b1},{3'b101},{3'b100},{3'b100},{3'b11},{3'b100},{3'b11},{3'b11},{3'b10},{3'b100},{3'b11},{3'b11},{3'b10},{3'b11},{3'b10},{3'b10},{3'b1},{3'b100},{3'b11},{3'b11},{3'b10},{3'b11},{3'b10},{3'b10},{3'b1},{3'b11},{3'b10},{3'b10},{3'b1},{3'b10},{3'b1},{3'b1},{3'b0}};
 
     reg signed[4:0] popcnt;
     wire[3:0] intern;
-    assign intern=lookup_popcnt[lut_in];
+
+    assign intern = lookup_popcnt[lut_in];
     
     always @(intern) begin
         popcnt = intern;
     end
-
+    
     always @(posedge clk) begin
-        if(rst|inst_rst) begin
+        if(rst) begin
+            count <= 0;
             popcnt_add <= 0;
         end
         else begin
-            if(inst_add) begin
+            if(c_rst) begin
+                count <= count + 1;
                 popcnt_add <= popcnt_add + popcnt;
             end
         end

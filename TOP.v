@@ -4,12 +4,12 @@
 module TOP(
     input clk,
     input rst,
+    input c_rst,
     input we,
     input w_en,
     input [7:0] addr_w, 
     input [7:0] addr_r, 
     input [55:0] data_in, 
-    input [4:0] opcode, //ins
     output wire signed[6:0] be_out
     );
 
@@ -42,7 +42,7 @@ module TOP(
     //instance
     bin_mult BE0(.clk(clk),
     .rst(rst),
-    .opcode(opcode),
+    .c_rst(c_rst),
     .w_en(w_en),
     .img(img),
     .w_input(wgt_in),

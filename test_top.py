@@ -32,77 +32,80 @@ async def test_top(dut):
     """Test reading data from RAM"""
     clock = Clock(dut.clk, 10, units="ps")
     cocotb.fork(clock.start())
-    ram_data = 0b1011110 1000000101001000011101011111100111110010101100011 
+    ram_data = 0b10111101000000101001000011101011111100111110010101100011 
     ram_addr = 0
+
+    dut.c_rst <= 0;
     await write_ram(dut, ram_addr, ram_data)
     await read_ram(dut, ram_addr)
 
-    dut.opcode <= 0b00000
+    # dut.opcode <= 0b00000
     await RST(dut)
     
     # await ClockCycles(dut.clk, 1)
     dut.w_en <= 1 
-    dut.opcode <= 0b00001
+    dut.c_rst <= 1
+    # dut.opcode <= 0b00001
     await ClockCycles(dut.clk, 8)
 
     dut.w_en <= 0
-    dut.opcode <= 0b00000
+    # dut.opcode <= 0b00000
     await RisingEdge(dut.clk)
 
-    dut.opcode <= 0b10000
+    # dut.opcode <= 0b10000
     await RisingEdge(dut.clk)
     
     # seelect LUTS    
-    dut.opcode <= 0b10010 #opcode= 1;
+    # dut.opcode <= 0b10010 #opcode= 1;
     await RisingEdge(dut.clk)
 
     popcount = dut.be_out.value
     binpc = popcount.binstr   
     print("Popcount {} bin{}".format(popcount, binpc))
 
-    dut.opcode <= 0b10100 #opcode= 2;
+    # dut.opcode <= 0b10100 #opcode= 2;
     await RisingEdge(dut.clk)
 
     popcount = dut.be_out.value
     binpc = popcount.binstr   
     print("Popcount {} bin{}".format(popcount, binpc))
 
-    dut.opcode <= 0b10110 #opcode= 3;
+    # dut.opcode <= 0b10110 #opcode= 3;
     await RisingEdge(dut.clk)
 
     popcount = dut.be_out.value
     binpc = popcount.binstr   
     print("Popcount {} bin{}".format(popcount, binpc))
 
-    dut.opcode <= 0b11000 #opcode= 4;
+    # dut.opcode <= 0b11000 #opcode= 4;
     await RisingEdge(dut.clk)
 
     popcount = dut.be_out.value
     binpc = popcount.binstr   
     print("Popcount {} bin{}".format(popcount, binpc))
 
-    dut.opcode <= 0b11010 #opcode= 5;
+    # dut.opcode <= 0b11010 #opcode= 5;
     await RisingEdge(dut.clk)
 
     popcount = dut.be_out.value
     binpc = popcount.binstr   
     print("Popcount {} bin{}".format(popcount, binpc))
 
-    dut.opcode <= 0b11100 #opcode= 6;
+    # dut.opcode <= 0b11100 #opcode= 6;
     await RisingEdge(dut.clk)
 
     popcount = dut.be_out.value
     binpc = popcount.binstr   
     print("Popcount {} bin{}".format(popcount, binpc))
 
-    dut.opcode <= 0b11110 #opcode= 7;
+    # dut.opcode <= 0b11110 #opcode= 7;
     await RisingEdge(dut.clk)
 
     popcount = dut.be_out.value
     binpc = popcount.binstr   
     print("Popcount {} bin{}".format(popcount, binpc))
     
-    dut.opcode <= 0b00000 #opcode= 7;
+    # dut.opcode <= 0b00000 #opcode= 7;
 
     await ClockCycles(dut.clk, 5)
       
