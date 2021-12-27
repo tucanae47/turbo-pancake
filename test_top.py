@@ -27,7 +27,8 @@ async def RST(dut):
     dut.rst <= 0;
     await ClockCycles(dut.clk, 2)
 
-# async def 
+async def bit_count(i):
+    return bin(i).count('1')
 
 @cocotb.test()
 async def test_top(dut):
@@ -66,7 +67,14 @@ async def test_top(dut):
     
 
     w = int(gen_vals_single[7])
+    img = gen_vals_single[3] 
+    print("w: {} , img: {}".format(bin(w), bin(img)))
+    xnor_value = ~( img ^ w)
+
+    pc = await bit_count(xnor_value)
+
     print(bin(w), w, [ bin(x) for x in gen_vals_single])
+    print("\n\n XNOR: {}, BIN: {} ---- POPCOUNT: {} BIN: {}".format(xnor_value ,bin(xnor_value), pc, bin(pc)))
 
 
     dut.data_high = BinaryValue(packed_input_h)
@@ -144,5 +152,5 @@ async def test_top(dut):
     
     # dut.opcode <= 0b00000 #opcode= 7;
 
-    await ClockCycles(dut.clk, 5)
+    await ClockCycles(dut.clk, 64)
       

@@ -14,4 +14,5 @@ module xnor7(
     assign img_cal[1] = img[1];
     assign img_cal[0] = img[0];
     assign x_out = img_cal~^w;
+    // assign x_out = ~(img_cal ^ w);
 endmodule
