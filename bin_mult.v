@@ -10,26 +10,7 @@ module bin_mult(
     output reg signed[6:0] popcnt_add
     );
 
-    // wire [6:0] img_unpacked [6:0];
-    // assign img_unpacked[0] = img[0];
-    // assign img_unpacked[1] = img[1];
-    // assign img_unpacked[2] = img[2];
-    // assign img_unpacked[3] = img[3];
-    // assign img_unpacked[4] = img[4];
-    // assign img_unpacked[5] = img[5];
-    // assign img_unpacked[6] = img[6];
-    // hardcode lookup table to select vectors 
-    
     reg [2:0] count = 3'b0;
-    // reg [42:0] w;
-    // always@(posedge clk)begin
-    //     if(rst)begin
-    //         w <= 0;
-    //     end
-    //     else if(w_en)begin
-    //         w <= {w[5:0],w_input};
-    //     end
-    // end
     
     wire [48:0] x_out;
     xnor7 xnor0(
@@ -72,24 +53,16 @@ module bin_mult(
     wire [6:0] lut_in_origin;
     wire [5:0] lut_in;
     assign lut_in_origin = x_out[(count*7)+:7];
-    // assign lut_in_origin = x_out[count];
-    // assign lut_in_origin = x_out[(count * 7) - 1:count];
     assign lut_in = lut_in_origin[5:0];
     
     // lut_selection
 
-    // wire [63:0] lookup_popcnt ;
     wire [192:0] lookup_popcnt ;
-    // assign lookup_popcnt={{3'b110},{3'b101},{3'b101},{3'b100},{3'b101},{3'b100},{3'b100},{3'b11},{3'b101},{3'b100},{3'b100},{3'b11},{3'b100},{3'b11},{3'b11},{3'b10},{3'b101},{3'b100},{3'b100},{3'b11},{3'b100},{3'b11},{3'b11},{3'b10},{3'b100},{3'b11},{3'b11},{3'b10},{3'b11},{3'b10},{3'b10},{3'b1},{3'b101},{3'b100},{3'b100},{3'b11},{3'b100},{3'b11},{3'b11},{3'b10},{3'b100},{3'b11},{3'b11},{3'b10},{3'b11},{3'b10},{3'b10},{3'b1},{3'b100},{3'b11},{3'b11},{3'b10},{3'b11},{3'b10},{3'b10},{3'b1},{3'b11},{3'b10},{3'b10},{3'b1},{3'b10},{3'b1},{3'b1},{3'b0}};
-    // assign lookup_popcnt= 192'b000001001010001010010011001010010011010011011100001010010011010011011100010011011100011100100101001010010011010011011100010011011100011100100101010011011100011100100101011100100101100101101110;
-    // assign lookup_popcnt= 192'b000001001010001010010011001010010011010011011100001010010011010011011100010011011100011100100101001010010011010011011100010011011100011100100101010011011100011100100101011100100101100101101110;
     assign lookup_popcnt = 192'b110101101100101100100011101100100011100011011010101100100011100011011010100011011010011010010001101100100011100011011010100011011010011010010001100011011010011010010001011010010001010001001000;
 
     reg signed[4:0] popcnt;
     wire[3:0] intern;
-    // wire[3:0] intern2;
 
-    // assign intern2 = lookup_popcnt[(count*3)+:3];
     assign intern=(lookup_popcnt[(lut_in*3)+:3]+lut_in_origin[6]);
 
     // assign popcnt = (lookup_popcnt[lut_in]+lut_in_origin[6])>>1-3'b111;

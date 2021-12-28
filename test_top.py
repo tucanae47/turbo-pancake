@@ -94,63 +94,6 @@ async def test_top(dut):
     await ClockCycles(dut.clk, 8)
 
     dut.w_en <= 0
-    # dut.opcode <= 0b00000
     await RisingEdge(dut.clk)
 
-    # dut.opcode <= 0b10000
-    await RisingEdge(dut.clk)
-    
-    # seelect LUTS    
-    # dut.opcode <= 0b10010 #opcode= 1;
-    await RisingEdge(dut.clk)
-
-    popcount = dut.be_out.value
-    binpc = popcount.binstr   
-    print("Popcount {} bin{}".format(popcount, binpc))
-
-    # dut.opcode <= 0b10100 #opcode= 2;
-    await RisingEdge(dut.clk)
-
-    popcount = dut.be_out.value
-    binpc = popcount.binstr   
-    print("Popcount {} bin{}".format(popcount, binpc))
-
-    # dut.opcode <= 0b10110 #opcode= 3;
-    await RisingEdge(dut.clk)
-
-    popcount = dut.be_out.value
-    binpc = popcount.binstr   
-    print("Popcount {} bin{}".format(popcount, binpc))
-
-    # dut.opcode <= 0b11000 #opcode= 4;
-    await RisingEdge(dut.clk)
-
-    popcount = dut.be_out.value
-    binpc = popcount.binstr   
-    print("Popcount {} bin{}".format(popcount, binpc))
-
-    # dut.opcode <= 0b11010 #opcode= 5;
-    await RisingEdge(dut.clk)
-
-    popcount = dut.be_out.value
-    binpc = popcount.binstr   
-    print("Popcount {} bin{}".format(popcount, binpc))
-
-    # dut.opcode <= 0b11100 #opcode= 6;
-    await RisingEdge(dut.clk)
-
-    popcount = dut.be_out.value
-    binpc = popcount.binstr   
-    print("Popcount {} bin{}".format(popcount, binpc))
-
-    # dut.opcode <= 0b11110 #opcode= 7;
-    await RisingEdge(dut.clk)
-
-    popcount = dut.be_out.value
-    binpc = popcount.binstr   
-    print("Popcount {} bin{}".format(popcount, binpc))
-    
-    # dut.opcode <= 0b00000 #opcode= 7;
-
-    await ClockCycles(dut.clk, 64)
       
