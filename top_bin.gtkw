@@ -1,0 +1,76 @@
+[*]
+[*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
+[*] Tue Dec 28 16:40:09 2021
+[*]
+[dumpfile] "/home/tuc/SHUTTLE/FPGADesignElements/eric/wave.vcd"
+[dumpfile_mtime] "Tue Dec 28 16:39:34 2021"
+[dumpfile_size] 4291
+[savefile] "/home/tuc/SHUTTLE/FPGADesignElements/eric/top_bin.gtkw"
+[timestart] 0
+[size] 1920 1080
+[pos] -961 -163
+*-14.000000 51100 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] top_bin.
+[treeopen] top_bin.BE0.
+[sst_width] 214
+[signals_width] 273
+[sst_expanded] 1
+[sst_vpaned_height] 322
+@29
+top_bin.data_high[31:0]
+@28
+top_bin.data_low[31:0]
+top_bin.BE0.clk
+top_bin.BE0.img[48:0]
+@22
+top_bin.BE0.popcnt[4:0]
+@200
+-x1
+@28
+top_bin.BE0.xnor0.img_cal[6:0]
+top_bin.BE0.xnor0.w[6:0]
+top_bin.BE0.xnor0.x_out[6:0]
+@200
+-
+-x2
+@28
+top_bin.BE0.xnor1.img_cal[6:0]
+top_bin.BE0.xnor1.w[6:0]
+top_bin.BE0.xnor1.x_out[6:0]
+@200
+-
+-x3
+@28
+top_bin.BE0.xnor2.img_cal[6:0]
+top_bin.BE0.xnor2.w[6:0]
+top_bin.BE0.xnor2.x_out[6:0]
+@200
+-
+-x4
+@28
+top_bin.BE0.xnor3.img_cal[6:0]
+top_bin.BE0.xnor3.w[6:0]
+top_bin.BE0.xnor3.x_out[6:0]
+@200
+-
+-x5
+@28
+top_bin.BE0.xnor4.img_cal[6:0]
+top_bin.BE0.xnor4.w[6:0]
+top_bin.BE0.xnor4.x_out[6:0]
+@200
+-
+-x6
+@28
+top_bin.BE0.xnor5.img_cal[6:0]
+top_bin.BE0.xnor5.w[6:0]
+top_bin.BE0.xnor5.x_out[6:0]
+@200
+-
+-x7
+@28
+top_bin.BE0.xnor6.img_cal[6:0]
+top_bin.BE0.xnor6.w[6:0]
+top_bin.BE0.xnor6.x_out[6:0]
+[pattern_trace] 1
+[pattern_trace] 0

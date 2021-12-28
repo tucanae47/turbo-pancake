@@ -1,5 +1,5 @@
 $date
-	Tue Dec 28 00:54:28 2021
+	Tue Dec 28 18:00:38 2021
 $end
 $version
 	Icarus Verilog
@@ -17,33 +17,33 @@ $var wire 1 & w_en $end
 $var wire 49 ' wgt [48:0] $end
 $var wire 49 ( img [48:0] $end
 $var wire 7 ) be_out [6:0] $end
-$scope begin pack_img_wgt[0] $end
-$scope begin genblk2 $end
+$scope begin pack_imgh[0] $end
 $upscope $end
+$scope begin pack_imgh[1] $end
 $upscope $end
-$scope begin pack_img_wgt[1] $end
-$scope begin genblk2 $end
+$scope begin pack_imgh[2] $end
 $upscope $end
+$scope begin pack_imgh[3] $end
 $upscope $end
-$scope begin pack_img_wgt[2] $end
-$scope begin genblk2 $end
+$scope begin pack_imgl[1] $end
 $upscope $end
+$scope begin pack_imgl[2] $end
 $upscope $end
-$scope begin pack_img_wgt[3] $end
-$scope begin genblk2 $end
+$scope begin pack_imgl[3] $end
 $upscope $end
+$scope begin pack_wgt[0] $end
 $upscope $end
-$scope begin pack_img_wgt[4] $end
-$scope begin genblk3 $end
+$scope begin pack_wgt[1] $end
 $upscope $end
+$scope begin pack_wgt[2] $end
 $upscope $end
-$scope begin pack_img_wgt[5] $end
-$scope begin genblk3 $end
+$scope begin pack_wgt[3] $end
 $upscope $end
+$scope begin pack_wgt[4] $end
 $upscope $end
-$scope begin pack_img_wgt[6] $end
-$scope begin genblk3 $end
+$scope begin pack_wgt[5] $end
 $upscope $end
+$scope begin pack_wgt[6] $end
 $upscope $end
 $scope module BE0 $end
 $var wire 1 ! c_rst $end
@@ -107,51 +107,51 @@ $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
-b110001 O
-b1011001 N
-b10111 M
-b110001 L
-b101010 K
-b1000010 J
-b10111 I
-b101010 H
-b10111 G
-b1111111 F
-b10111 E
-b10111 D
-b101111 C
-b1000111 B
-b10111 A
-b101111 @
-b1100011 ?
-b1011 >
-b10111 =
-b1100011 <
-b1111010 ;
-b10010 :
-b10111 9
-b1111010 8
-b1110000 7
-b11000 6
-b10111 5
-b1110000 4
+bz O
+bx N
+bz M
+bz L
+bz K
+bx J
+bz I
+bz H
+bz G
+bx F
+bz E
+bz D
+bz C
+bx B
+bz A
+bz @
+bz ?
+bx >
+bz =
+bz <
+bz ;
+bx :
+bz 9
+bz 8
+bz 7
+bx 6
+bz 5
+bz 4
 b0 3
-b10 2
+bx 2
 b0 1
-b10 0
-b11000 /
-b11000 .
-b1011001100001011111111000111000101100100100011000 -
-b10111001011100101110010111001011100101110010111 ,
+bx 0
+bx /
+bx .
+bx -
+bz ,
 b110101101100101100100011101100100011100011011010101100100011100011011010100011011010011010010001101100100011100011011010100011011010011010010001100011011010011010010001011010010001010001001000 +
-b110001010101000101110101111110001111110101110000 *
+bz *
 b0 )
-b110001010101000101110101111110001111110101110000 (
-b10111001011100101110010111001011100101110010111 '
+bz (
+bz '
 z&
 1%
-b10100011000101010100010111 $
-b101111110001111110101110000 #
+bz $
+bz #
 1"
 z!
 $end
@@ -167,71 +167,111 @@ $end
 #25000
 0"
 #30000
+b100 2
+b100 0
+b110011 /
+b110011 .
+b110011 6
+b101000 :
+b11011 >
+b101111 B
+b101010 F
+b1101110 J
+b11111110111001010100101111001101101010000110011 -
+b11111 N
+b1000001 7
+b1011010 ;
+b1101001 ?
+b1011101 C
+b1011000 G
+b11100 K
+b1101101 O
+b1000001 4
+b1011010 8
+b1101001 <
+b1011101 @
+b1011000 D
+b11100 H
+b1101101 L
+b1101 5
+b1101 9
+b1101 =
+b1101 A
+b1101 E
+b1101 I
+b1101 M
+b1101101001110010110001011101110100110110101000001 (
+b1101101001110010110001011101110100110110101000001 *
+b1101000110100011010001101000110100011010001101 '
+b1101000110100011010001101000110100011010001101 ,
+b1011101110100110110101000001 #
+b1011000001110011011010001101 $
 1&
 1!
 1"
 #35000
 0"
 #40000
-b10010 /
-b10 )
-b10 3
-b10010 .
+b10 2
+b10 0
+b101000 /
+b100 )
+b100 3
+b101000 .
 b1 1
 1"
 #45000
 0"
 #50000
-b11 2
-b11 0
-b1011 /
-b100 )
-b100 3
-b1011 .
+b100 2
+b100 0
+b11011 /
+b110 )
+b110 3
+b11011 .
 b10 1
 1"
 #55000
 0"
 #60000
-b100 2
-b111 /
-b100 0
-b111 )
-b111 3
-b1000111 .
+b101 2
+b101 0
+b101111 /
+b1010 )
+b1010 3
+b101111 .
 b11 1
 1"
 #65000
 0"
 #70000
-b111 2
-b111 0
-b111111 /
-b1011 )
-b1011 3
-b1111111 .
+b11 2
+b11 0
+b101010 /
+b1111 )
+b1111 3
+b101010 .
 b100 1
 1"
 #75000
 0"
 #80000
-b10 2
-b10 0
-b10 /
+b101 2
+b101110 /
+b101 0
 b10010 )
 b10010 3
-b1000010 .
+b1101110 .
 b101 1
 1"
 #85000
 0"
 #90000
-b100 2
-b100 0
-b11001 /
-b10100 )
-b10100 3
-b1011001 .
+b11111 /
+b101 0
+b10111 )
+b10111 3
+b11111 .
 b110 1
 1"
 #95000
@@ -240,8 +280,8 @@ b110 1
 b0xxxx 2
 bx /
 bx 0
-b11000 )
-b11000 3
+b11100 )
+b11100 3
 bx .
 b111 1
 1"
@@ -249,19 +289,17 @@ b111 1
 0"
 #110000
 0&
-b10 2
-b10 0
-b11000 /
+0!
+b100 2
+b100 0
+b110011 /
 bx )
 bx 3
-b11000 .
+b110011 .
 b0 1
 1"
 #115000
 0"
 #120000
-b10010 /
-b10010 .
-b1 1
 1"
 #120001

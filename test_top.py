@@ -35,65 +35,71 @@ async def test_top(dut):
     """Test reading data from RAM"""
     clock = Clock(dut.clk, 10, units="us")
     cocotb.fork(clock.start())
-    # ram_data = 0b10111101000000101001000011101011111100111110010101100011 
-    # ram_addr = 0
 
-    # dut.c_rst <= 0;
-    # await write_ram(dut, ram_addr, ram_data)
-    # await read_ram(dut, ram_addr)
-
-    # dut.opcode <= 0b00000
-    # dut.data_high = 0b101111010000001010010000 
     packed_input_h = int(0)
-    gen_vals_single = []
+    img_matrix = []
+    # generate random stream of data for the image
     for i in range(4):
-        bin_val_h = int(random.getrandbits(7))
-        gen_vals_single.append(bin_val_h)
+        bin_val_h = random.getrandbits(7)
+        img_matrix.append(bin_val_h)
         packed_input_h = packed_input_h | bin_val_h
         print(bin(packed_input_h), bin(bin_val_h))
         if i < 3:
             packed_input_h = packed_input_h << 7 
+
     print(bin(packed_input_h))
     
+    # generate random stream of data for the image
     packed_input_l = int(0)
-    for i in range(4):
-        bin_val_l = int(random.getrandbits(7))
-        gen_vals_single.append(bin_val_l)
+    for i in range(3):
+        # print(i)
+        bin_val_l = random.getrandbits(7)
+        img_matrix.append(bin_val_l)
         packed_input_l = packed_input_l | bin_val_l
         print(bin(packed_input_l), bin(bin_val_l))
-        if i < 3:
+        if i < 2:
             packed_input_l = packed_input_l << 7 
+
     print(bin(packed_input_l))
     
 
-    w = int(gen_vals_single[7])
-    img = gen_vals_single[3] 
-    print("w: {} , img: {}".format(bin(w), bin(img)))
-    xnor_value = ~( img ^ w)
+    w = random.getrandbits(7)
+    packed_input_l = packed_input_l << 7 
+    packed_input_l = packed_input_l | w
+    
+    debug_op = []
+    print(bin(w), w, [ bin(x) for x in img_matrix])
+    # xnor popcount and sum up
+    pc_sum_out_expected = 0
+    for i in range(7):
+        img = img_matrix[i] 
+        # python uses complement for doing negation as integers are signed, so this does a correction as unsigned (7 bits only) 
+        xn = ((~( img ^ w) & 0xFF) & ((1<<7) - 1))
+        pc = await bit_count(xn)
+        im = format(img, "07b")
+        wg = format(w, "07b")
+        xo = format(xn, "07b")
+        debug_op.append(xo)
+        print("\nWEIGHT: {} \nIMAGE : {} \nXNOR  : {}\n{} \nPOPCOUNT:{}".format(wg, im, xo, bin(xn),  pc))
+        pc_sum_out_expected = pc_sum_out_expected + pc
 
-    pc = await bit_count(xnor_value)
+    print(debug_op)
 
-    print(bin(w), w, [ bin(x) for x in gen_vals_single])
-    print("\n\n XNOR: {}, BIN: {} ---- POPCOUNT: {} BIN: {}".format(xnor_value ,bin(xnor_value), pc, bin(pc)))
-
-
+    await RST(dut)
     dut.data_high = BinaryValue(packed_input_h)
     dut.data_low = BinaryValue(packed_input_l)
-    val_input = dut.data_high.value
-    # bin_str_val = val_input.binstr  
-    # print("----->> {} bin{}".format(val_input, bin_str_val))
-    # dut.data_high = 0b11101011111100111110010101100011 
-    # dut.data_low = 0b11101011111100111110010101100011 
-    # dut.data_low = 0b0 
-    await RST(dut)
-    
-    # await ClockCycles(dut.clk, 1)
     dut.w_en <= 1 
     dut.c_rst <= 1
-    # dut.opcode <= 0b00001
     await ClockCycles(dut.clk, 8)
+    observed = dut.be_out.value
+    expected = pc_sum_out_expected
+    # print(format(expected, '07b'), observed)
+    print(format(expected, '07b'), observed)
+    assert observed == expected,\
+               "expected = %s, observed = %s" % (expected, observed)
 
     dut.w_en <= 0
+    dut.c_rst <= 0
     await RisingEdge(dut.clk)
 
       
